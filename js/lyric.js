@@ -27,6 +27,9 @@
         },
         parseLyric: function(data){
             var $this = this;
+            // 清空上一首歌曲的歌词和时间信息
+            $this.times = []
+            $this.lyrics = []
             var array = data.split("\n");
             // console.log(array);
             // 正则表达式 [00:00.92]
@@ -48,11 +51,13 @@
             })
         },
         currentIndex: function (currentTime){
-            if(currentTime>= this.times[0]){
+            if(currentTime >= this.times[0]){
                 this.index++;
-                
+                this.times.shift()
             }
-            // console.log(this.lyrics[this.index]);
+            console.log(this.index);
+            console.log(this.lyrics[this.index]);
+            return this.index
         }
     }
     Lyric.prototype.init.prototype = Lyric.prototype;

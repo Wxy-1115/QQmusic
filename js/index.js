@@ -67,6 +67,7 @@ $(function () {
     function initMusicLyric(music){
         lyric = new Lyric(music.link_lrc)
         var $lryicContainer = $(".song_lyric")
+        $lryicContainer.html("")
         lyric.loadLyric(function(){
             // 创建歌词列表
             $.each(lyric.lyrics, function(index, ele){
@@ -132,6 +133,8 @@ $(function () {
             player.playMusic($item.get(0).index, $item.get(0).music);
             // 3.6 切换歌曲信息
             initMusicInfo($item.get(0).music);
+            // 3.7 切换歌词信息
+            initMusicLyric($item.get(0).music)
         });
         // 4.监听底部控制区域播放按钮的点击
         $musicPlay.click(function () {
@@ -175,7 +178,15 @@ $(function () {
             value = currentTime / duration * 100;
             progress.setprogress(value)
             // 实现歌词的同步
-            lyric.currentIndex(currentTime);
+            var index = lyric.currentIndex(currentTime);
+            var $item = $(".song_lyric li").eq(index);
+            $item.addClass("cur");
+            $item.siblings().removeClass("cur");
+
+            if(index <= 2) return
+            $(".song_lyric").css({
+                marginTop: ((-index+2) * 30)
+            })
         })
         //9.监听声音按钮的点击
         $(".music_voice_icon").click(function(){

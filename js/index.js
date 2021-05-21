@@ -39,7 +39,7 @@ $(function () {
             player.musicSeekTo(value)
         });
         progress.progressMove(function (value) {
-            player.musicSeekTo(value)
+            // player.musicSeekTo(value)
         });
 
         var $music_voice_bar = $(".music_voice_bar");

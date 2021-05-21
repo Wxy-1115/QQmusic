@@ -27,6 +27,7 @@
             }
         },
         preindex: function(){
+            // 上一首
             var index = this.currentIndex - 1;
             if(index < 0){
                 index = this.musicList.length - 1;
@@ -34,6 +35,7 @@
             return index;
         },
         nextindex: function(){
+            // 下一首
             var index = this.currentIndex + 1;
             if(index > this.musicList.length - 1){
                 index = 0;

@@ -55,8 +55,8 @@
                 this.index++;
                 this.times.shift()
             }
-            console.log(this.index);
-            console.log(this.lyrics[this.index]);
+            // console.log(this.index);
+            // console.log(this.lyrics[this.index]);
             return this.index
         }
     }
